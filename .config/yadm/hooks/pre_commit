@@ -1,0 +1,4 @@
+#!/bin/bash
+
+dconf dump / > "$HOME/.config/dconf/settings.ini"
+yadm add -u
