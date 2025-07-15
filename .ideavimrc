@@ -3,44 +3,44 @@
 " You can find a list of commands here: https://jb.gg/h38q75
 " Find more examples here: https://jb.gg/share-ideavimrc
 
+"" Base Settings
+"" ========================================================
+set scrolloff=10
+set relativenumber
+set showmode
+set showcmd
+set visualbell
+"set clipboard+=unnamed
+set clipboard^=unnamed,unnamedplus
 
-"" -- Suggested options --
-" Show a few lines of context around the cursor. Note that this makes the
-" text scroll if you mouse-click near the start or end of the window.
-set scrolloff=5
-
-" Do incremental searching.
+"" -- Search improvements --
+set ignorecase
+set smartcase
 set incsearch
+set hlsearch
 
-" Don't use Ex mode, use Q for formatting.
-map Q gq
+"" -- Leader key assignment --
+let mapleader = " "
 
-" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+"" Plugin Settings
+"" ========================================================
+set highlightedyank
+set nerdtree
 
-" Highlight copied text
-Plug 'machakann/vim-highlightedyank'
-" Commentary plugin
-Plug 'tpope/vim-commentary'
-
-
-
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
-"" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
-
-"" Map <leader>d to start debug
-"map <leader>d <Action>(Debug)
-
-"" Map \b to toggle the breakpoint on the current line
-"map \b <Action>(ToggleLineBreakpoint)
-"" ---------------------------------------------------
+" Which-key settings
 set which-key
 set notimeout
+let g:WhichKey_FontSize = 16
 
-"" ---------------------- Tutorial -------------------
-" leader key
-let mapleader = ' '
+nmap <leader>R :action :cursive.repl.actions/load-file<CR>
+nmap <S-CR> :action :cursive.repl.actions/run-last-sexp<CR>
+nmap <C-CR> :action :cursive.repl.actions/run-top-sexp<CR>
 
+"" ---------------------------------------------------
+let g:WhichKey_ShowVimActions = "true"
+
+"" Key mappings
+"" ========================================================
 " redo
 noremap U <C-r>
 
@@ -51,7 +51,6 @@ noremap \ "_
 xnoremap p P
 
 " sync Vim clipboard with OS clipboard
-set clipboard^=unnamed,unnamedplus
 
 
 " jump between angle brackets
@@ -67,16 +66,13 @@ noremap <leader>cc :edit ~/.ideavimrc<cr>
 noremap <leader>cs :source ~/.ideavimrc<cr>:nohlsearch<cr>
 
 " highlight search results
-set hlsearch
 
 " remove search highlights
 noremap <Esc> :nohlsearch<cr>
 
 " case-insensitive search
-set ignorecase
 
 " enable case-sensitive search when uppercased letter is present
-set smartcase
 
 " move to the beginning of the next word
 map w [w
@@ -103,3 +99,13 @@ map <leader>ww <Action>(Unsplit)
 map <leader>wa <Action>(UnsplitAll)
 
 " video 7
+
+let g:WhichKeyDesc_display = "<leader>d Display options"
+" Display options
+map <leader>dd <action>(ToggleDistractionFreeMode)
+map <leader>dz <action>(ToggleZenMode)
+map <leader>df <action>(ToggleFullScreen)
+
+
+" Open NERDTree (use q to exit)
+map <leader>x :NERDTreeToggle<CR>
