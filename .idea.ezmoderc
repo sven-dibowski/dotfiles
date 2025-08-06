@@ -17,7 +17,7 @@ set defaultmode ez
 # Example: Use AceJump in "all words mode":
 # map ez <space> <idea AceWordAction>
 
-# remap keys becaus of colemad -dh on custom keyboard
+# remap keys becaus of colemak -dh on custom keyboard
 # ---------------------------------------------------
 #map type <default> <native>
 #map typeonce <default> <native><mode ez>
